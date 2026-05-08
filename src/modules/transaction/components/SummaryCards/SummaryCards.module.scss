@@ -1,0 +1,130 @@
+@use '../../../../shared/styles/variables' as *;
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $spacing-md;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: $spacing-sm;
+  }
+}
+
+.card {
+  position: relative;
+  padding: $spacing-lg;
+  border-radius: $radius-lg;
+  background: $color-surface;
+  border: 1px solid $color-border;
+  animation: fadeInUp 500ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  transition: transform $transition-fast;
+  overflow: hidden;
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+}
+
+.income {}
+.expense {}
+
+.balance {
+  background: $color-accent;
+  border-color: transparent;
+
+  .cardLabel {
+    color: rgba(0, 0, 0, 0.5);
+  }
+
+  .cardValue {
+    color: var(--color-bg);
+  }
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: $spacing-md;
+}
+
+.cardBody {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+}
+
+.cardLabel {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: $color-text-secondary;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.iconCircle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: $radius-md;
+}
+
+.incomeIcon {
+  background: $color-income-soft;
+  color: $color-income;
+}
+
+.cardValue {
+  font-family: $font-family-mono;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: $color-text-primary;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.positive {
+  color: $color-income;
+}
+
+.negative {
+  color: $color-expense;
+}
+
+// ── Donut Chart ──
+
+.donut {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.donutProgress {
+  transition: stroke-dashoffset 800ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.donutLabel {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: $font-family-mono;
+  font-size: 0.625rem;
+  font-weight: 600;
+  color: $color-text-primary;
+}
+
+// Override donut label color inside balance card
+.balance .donutLabel {
+  color: var(--color-bg);
+}
+
+.balanceCheck {
+  color: rgba(0, 0, 0, 0.3);
+}

@@ -1,0 +1,155 @@
+@use '../../../../shared/styles/variables' as *;
+
+.container {
+  background: var(--color-surface);
+  border-radius: $radius-xl;
+  overflow: hidden;
+  animation: fadeInUp 500ms cubic-bezier(0.16, 1, 0.3, 1) 180ms both;
+  height: 100%;
+  padding-top: $spacing-xl;
+}
+
+.title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: $spacing-lg;
+  padding: 0 $spacing-xl;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  align-items: center;
+  padding: $spacing-md $spacing-lg;
+  border-bottom: 1px solid var(--color-border-subtle);
+  transition: background $transition-fast;
+  animation: fadeInUp 400ms cubic-bezier(0.16, 1, 0.3, 1) both;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.02);
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr auto;
+  }
+}
+
+.colDescription {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  min-width: 0;
+}
+
+.iconBox {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-bg-secondary);
+  border-radius: $radius-md;
+  color: var(--color-text-primary);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+.descriptionText {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.name {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: $color-text-primary;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.typeBadge {
+  font-size: 0.6875rem;
+  color: $color-text-muted;
+  margin-top: 1px;
+}
+
+.colCategory {
+  // empty base for grid
+}
+
+.categoryTag {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 2px 10px;
+  border-radius: $radius-full;
+  background: rgba(255, 255, 255, 0.05);
+  color: $color-text-secondary;
+  border: 1px solid $color-border;
+}
+
+.colDate {
+  font-family: $font-family-mono;
+  font-size: 0.8125rem;
+  color: $color-text-secondary;
+}
+
+.colAmount {
+  font-family: $font-family-mono;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  text-align: right;
+}
+
+.amountIncome {
+  color: $color-income;
+}
+
+.amountExpense {
+  color: $color-expense;
+}
+
+// ──────────────────────────────────────────────
+// Empty State
+// ──────────────────────────────────────────────
+
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-2xl $spacing-lg;
+  text-align: center;
+  animation: fadeIn 600ms ease both;
+}
+
+.emptyIcon {
+  color: $color-text-muted;
+  margin-bottom: $spacing-lg;
+  opacity: 0.5;
+}
+
+.emptyTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  color: $color-text-secondary;
+  margin-bottom: $spacing-xs;
+}
+
+.emptyDescription {
+  font-size: 0.875rem;
+  color: $color-text-muted;
+}

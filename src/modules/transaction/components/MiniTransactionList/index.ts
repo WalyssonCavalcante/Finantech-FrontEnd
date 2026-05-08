@@ -1,0 +1,1 @@
+export { MiniTransactionList } from './MiniTransactionList';

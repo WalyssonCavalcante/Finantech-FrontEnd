@@ -1,125 +1,244 @@
-.page {
-  --background: #fafafa;
-  --foreground: #fff;
+@use '../shared/styles/variables' as *;
 
-  --text-primary: #000;
-  --text-secondary: #666;
-
-  --button-primary-hover: #383838;
-  --button-secondary-hover: #f2f2f2;
-  --button-secondary-border: #ebebeb;
-
+.layout {
   display: flex;
-  flex: 1;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-geist-sans);
-  background-color: var(--background);
+  min-height: 100vh;
 }
 
 .main {
-  display: flex;
   flex: 1;
-  width: 100%;
-  max-width: 800px;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: space-between;
-  background-color: var(--foreground);
-  padding: 120px 60px;
-}
-
-.intro {
+  margin-left: $sidebar-width;
+  padding: $spacing-lg $spacing-xl;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  text-align: left;
-  gap: 24px;
+  background: var(--color-bg);
+
+  @media (max-width: 960px) {
+    margin-left: 0;
+    padding: $spacing-md;
+  }
 }
 
-.intro h1 {
-  max-width: 320px;
-  font-size: 40px;
-  font-weight: 600;
-  line-height: 48px;
-  letter-spacing: -2.4px;
-  text-wrap: balance;
-  color: var(--text-primary);
-}
+// ──────────────────────────────────────────────
+// Top Bar
+// ──────────────────────────────────────────────
 
-.intro p {
-  max-width: 440px;
-  font-size: 18px;
-  line-height: 32px;
-  text-wrap: balance;
-  color: var(--text-secondary);
-}
-
-.intro a {
-  font-weight: 500;
-  color: var(--text-primary);
-}
-
-.ctas {
+.topBar {
   display: flex;
-  flex-direction: row;
-  width: 100%;
-  max-width: 440px;
-  gap: 16px;
-  font-size: 14px;
-}
-
-.ctas a {
-  display: flex;
-  justify-content: center;
   align-items: center;
-  height: 40px;
-  padding: 0 16px;
-  border-radius: 128px;
-  border: 1px solid transparent;
-  transition: 0.2s;
+  justify-content: space-between;
+  margin-bottom: $spacing-xl;
+}
+
+.searchBar {
+  display: flex;
+  align-items: center;
+  background: var(--color-surface);
+  border-radius: $radius-full;
+  padding: 8px 16px;
+  width: 300px;
+  gap: $spacing-sm;
+  border: 1px solid var(--color-border-subtle);
+
+  @media (max-width: 600px) {
+    width: 200px;
+  }
+}
+
+.searchIcon {
+  color: var(--color-text-muted);
+}
+
+.searchInput {
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 0.9375rem;
+  color: var(--color-text-primary);
+  width: 100%;
+
+  &::placeholder {
+    color: var(--color-text-muted);
+  }
+}
+
+.topIcons {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+}
+
+.iconButton {
+  background: transparent;
+  border: none;
+  color: var(--color-text-secondary);
   cursor: pointer;
-  width: fit-content;
-  font-weight: 500;
-}
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color $transition-fast;
 
-a.primary {
-  background: var(--text-primary);
-  color: var(--background);
-  gap: 8px;
-}
-
-a.secondary {
-  border-color: var(--button-secondary-border);
-}
-
-/* Enable hover only on non-touch devices */
-@media (hover: hover) and (pointer: fine) {
-  a.primary:hover {
-    background: var(--button-primary-hover);
-    border-color: transparent;
-  }
-
-  a.secondary:hover {
-    background: var(--button-secondary-hover);
-    border-color: transparent;
+  &:hover {
+    color: var(--color-text-primary);
   }
 }
 
-@media (max-width: 600px) {
-  .main {
-    padding: 48px 24px;
-  }
+.newBtn {
+  background: var(--color-text-primary);
+  color: var(--color-bg);
+  border: none;
+  padding: 8px 16px;
+  border-radius: $radius-full;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity $transition-fast;
 
-  .intro {
-    gap: 16px;
-  }
-
-  .intro h1 {
-    font-size: 32px;
-    line-height: 40px;
-    letter-spacing: -1.92px;
+  &:hover {
+    opacity: 0.8;
   }
 }
 
+// ──────────────────────────────────────────────
+// Dashboard Layout
+// ──────────────────────────────────────────────
+
+.pageTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin-bottom: $spacing-lg;
+  letter-spacing: -0.02em;
+}
+
+.dashboardGrid {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: $spacing-2xl;
+
+  @media (max-width: 1200px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.leftArea {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-2xl;
+}
+
+.walletSection {
+  width: 100%;
+}
+
+.leftSubGrid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: $spacing-2xl;
+
+  @media (max-width: 800px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.transactionsSection {
+  display: flex;
+  flex-direction: column;
+}
+
+.analyticsSection {
+  display: flex;
+  flex-direction: column;
+}
+
+.rightArea {
+  display: flex;
+  flex-direction: column;
+  background: var(--color-surface);
+  border-radius: $radius-xl;
+  padding: $spacing-xl;
+  border: 1px solid var(--color-border-subtle);
+  animation: fadeInUp 400ms ease both;
+  height: fit-content;
+}
+
+.sectionMargin {
+  margin-top: $spacing-md;
+}
+
+.sectionTitle {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: $spacing-md;
+}
+
+.sidebarTitle {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: $spacing-sm;
+}
+
+.progressBar {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+  padding-bottom: $spacing-lg;
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.progressText {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+.progressTrack {
+  width: 100%;
+  height: 6px;
+  background: var(--color-border-subtle);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: var(--color-text-primary);
+  border-radius: 3px;
+}
+
+.spacer {
+  height: $spacing-xl;
+}
+
+// ──────────────────────────────────────────────
+// Loading State
+// ──────────────────────────────────────────────
+
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-lg;
+  flex: 1;
+  min-height: 50vh;
+
+  p {
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+  }
+}
+
+.spinner {
+  width: 32px;
+  height: 32px;
+  border: 2px solid var(--color-border);
+  border-top-color: var(--color-text-primary);
+  border-radius: 50%;
+  animation: spin 800ms linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}

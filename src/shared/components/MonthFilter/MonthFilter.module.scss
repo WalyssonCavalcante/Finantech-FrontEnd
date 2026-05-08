@@ -1,0 +1,53 @@
+@use '../../../shared/styles/variables' as *;
+
+.container {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  padding: $spacing-sm;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid $color-border;
+  border-radius: $radius-md;
+  width: 100%;
+}
+
+.navButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: $radius-sm;
+  background: transparent;
+  color: $color-text-secondary;
+  transition: all $transition-fast;
+  flex-shrink: 0;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.06);
+    color: $color-text-primary;
+  }
+
+  &:active {
+    transform: scale(0.92);
+  }
+}
+
+.label {
+  font-family: $font-family-display;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: $color-text-primary;
+  letter-spacing: -0.01em;
+  flex: 1;
+  text-align: center;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.year {
+  color: $color-text-muted;
+  font-weight: 400;
+  font-size: 0.75rem;
+}

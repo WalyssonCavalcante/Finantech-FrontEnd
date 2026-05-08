@@ -1,0 +1,122 @@
+@use '../../../shared/styles/variables' as *;
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: $sidebar-width;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--color-surface);
+  border-right: 1px solid var(--color-border);
+  padding: $spacing-2xl $spacing-lg;
+  z-index: 50;
+  overflow-y: auto;
+
+  @media (max-width: 960px) {
+    display: none;
+  }
+}
+
+.logoContainer {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  padding-bottom: $spacing-2xl;
+}
+
+.logoIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: var(--color-text-primary);
+  color: var(--color-surface);
+  border-radius: $radius-sm;
+}
+
+.logoText {
+  font-family: $font-family-display;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  letter-spacing: -0.03em;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+}
+
+.navItem, .searchItem {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  padding: 12px 16px;
+  border-radius: $radius-md;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  transition: all $transition-fast;
+  cursor: pointer;
+  text-decoration: none;
+  border: none;
+  background: transparent;
+  width: 100%;
+  text-align: left;
+  font-family: inherit;
+
+  &:hover {
+    background: var(--color-surface-hover);
+    color: var(--color-text-primary);
+  }
+}
+
+.navItemActive {
+  background: rgba(59, 130, 246, 0.1);
+  color: var(--color-text-primary);
+  font-weight: 600;
+
+  &:hover {
+    background: rgba(59, 130, 246, 0.15);
+  }
+}
+
+.divider {
+  height: 1px;
+  background: var(--color-border);
+  margin: $spacing-2xl 0;
+}
+
+.footerNav {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+  margin-top: auto;
+}
+
+.logoutButton {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  padding: 12px 16px;
+  border-radius: $radius-md;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  transition: all $transition-fast;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  width: 100%;
+  text-align: left;
+  font-family: inherit;
+
+  &:hover {
+    background: rgba(239, 68, 68, 0.1);
+    color: var(--color-error);
+  }
+}

@@ -1,0 +1,131 @@
+// Import global variables to use within the local module
+@use '@/shared/styles/variables' as *;
+
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+  font-family: $font-family-display;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+
+  label {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: $color-text-secondary;
+    letter-spacing: 0.01em;
+  }
+
+  input, select {
+    padding: 10px $spacing-md;
+    border: 1px solid $color-border;
+    border-radius: $radius-md;
+    background-color: var(--color-bg);
+    color: $color-text-primary;
+    font-size: 0.9375rem;
+    transition: border-color $transition-fast, box-shadow $transition-fast;
+    outline: none;
+
+    &::placeholder {
+      color: $color-text-muted;
+    }
+
+    &:focus {
+      border-color: #3B82F6;
+      box-shadow: 0 0 0 3px rgba(0, 208, 156, 0.08);
+    }
+  }
+
+  select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%238B949E' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding-right: 36px;
+  }
+}
+
+// Type toggle buttons
+.typeToggle {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $spacing-sm;
+}
+
+.typeButton {
+  padding: 10px $spacing-md;
+  border: 1px solid $color-border;
+  border-radius: $radius-md;
+  background: transparent;
+  color: $color-text-secondary;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all $transition-fast;
+  cursor: pointer;
+
+  &:hover {
+    border-color: rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.02);
+  }
+}
+
+.typeButtonActive {
+  color-scheme: typeButton;
+}
+
+.typeButtonActiveIncome {
+  color-scheme: typeButtonActive;
+  border-color: $color-income;
+  background: $color-income-soft;
+  color: $color-income;
+}
+
+.typeButtonActiveExpense {
+  color-scheme: typeButtonActive;
+  border-color: $color-expense;
+  background: $color-expense-soft;
+  color: $color-expense;
+}
+
+.errorMessage {
+  font-size: 0.75rem;
+  color: $color-error;
+  margin-top: 2px;
+}
+
+.submitButton {
+  margin-top: $spacing-sm;
+  padding: 12px $spacing-md;
+  background: linear-gradient(135deg, $color-accent, #00b385);
+  color: var(--color-bg);
+  border: none;
+  border-radius: $radius-md;
+  font-weight: 700;
+  font-size: 0.9375rem;
+  letter-spacing: -0.01em;
+  cursor: pointer;
+  transition: all $transition-fast;
+
+  &:hover {
+    background: linear-gradient(135deg, #2563eb, $color-accent);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(0, 208, 156, 0.25);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  &:disabled {
+    background: $color-surface-hover;
+    color: $color-text-muted;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+  }
+}
